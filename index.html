@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Luis Rojas" />
+    <meta
+    name="description"
+    content="Gestión de calificaciones y promedios de alumnos de nivel media superior"
+    />
+    <meta name="keywords" content="HTML, CSS, Javascript" />
+    <meta name="author" content="Luis Rojas" />
+    <title>Gestión de Alumnos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Gestión de Alumnos</h1>
+        <div id="formulario" class="section">
+        <fieldset  class="formulario-alumno">
+            <legend><h2>Alta de Alumnos</h2></legend>
+            <input type="text" id="nombre" placeholder="Nombre">
+            <input type="text" id="apellidos" placeholder="Apellidos">
+            <input type="number" id="edad" placeholder="Edad">
+            <button class="aceptar"  onclick="altaAlumno()">Dar de Alta</button>
+            <span class="oculto" id="errorExisteAlumno">El alumno ya existe</span>
+            <span class="oculto" id="errorEdad">¡Solo mayores de edad!</span>
+            <span class="oculto" id="errorTexto">¡No se admiten números, caracteres especiales ni espacios al principio o final del dato!</span>
+        </div>
+        <div id="materias" class="section">
+        </fieldset>
+            <fieldset class="formulario-clases">
+                <legend><h2>Crear clases</h2></legend> <input type="text" id="materiaNombre" placeholder="Nombre de la Materia">
+                <button class="aceptar"    onclick="crearClase()">Inscribir Materia</button>
+            
+            <span class="oculto" id="errorClaseInscrita">La clase ya existe</span>
+            <span class="oculto" id="errorTextoClase">¡No se admiten números, caracteres especiales ni espacios al principio o final del dato!</span>
+        </div>
+    </fieldset>
+        <div id="inscripcion" class="section">
+        
+            <fieldset class="formulario-inscripcion">
+                <legend><h2>Inscribir alumno a una clase</h2></legend>
+            <select id="alumnosInscripcion">
+                <!-- Opciones de alumnos -->
+            </select>
+            <select id="materiasInscripcion">
+                <!-- Opciones de materias -->
+            </select>
+            <button class="aceptar"  onclick="asignarClase()">Inscribir</button>
+            <span class="oculto" id="errorInscrito">El alumno ya está inscrito a la clase</span>
+        </fieldset>
+        </div>
+        <div id="calificaciones" class="section">
+            <fieldset class="formulario-calificaciones" > 
+                <legend><h2>Asignar Calificaciones</h2></legend>
+            <select id="alumnosCal">
+                <!-- Opciones de alumnos -->
+            </select>
+            <select id="materiasCal">
+                <!-- Opciones de materias -->
+            </select>
+            <input type="number" id="calificacion" placeholder=" Ingresa una calificación entre 0 a 100">
+            <button class="aceptar"  onclick="asignarCalificacion()">Asignar Calificación</button>
+            <span class="oculto" id="errorNumNegativo">Ingrese números positivos</span>
+            <span class="oculto" id="errorNoInscrito">El alumno no está inscrito a la materia</span>
+            <span class="oculto" id="errorNotNullCali">El alumno ya tiene una calificación asignada para esta materia</span>
+        </fieldset>
+        </div>
+        <div id="resultados" class="section">
+            
+            <fieldset class="resultados">
+                <legend><h2>Resultados</h2></legend>
+            <button class="btnfiltros" onclick="buscarPorNombreApellido()">  Buscar por Nombre o Apellido  </button>
+            <br>
+            <button class="btnfiltros"  onclick="obtenerPromedioAlumnos()">Promedio alumnos</button>
+
+            <button class="btnfiltros"  onclick="ordenarAlumnosCalificacionAscendente()"> &#9650</button> 
+
+            <button class="btnfiltros"  onclick="ordenarAlumnosCalificacionDescendente()"> &#9660</button>
+            <br>
+            <button class="btnfiltros"  onclick="ordenarAlumnosAscendente()">Calificaciones  &#9650</button>
+            <button class="btnfiltros"  onclick="ordenarAlumnosDescendente()">Calificaciones &#9660</button>
+            <br>
+            <button class="btnrefresh" onclick="location.reload()">Actualizar</button>
+            <button class="btnDelet" onclick="borrarDatos()">Borrar todos los datos</button>
+        </fieldset>
+            <div id="busqueda"></div>
+        </div>
+        <div id="promedioAlumnosResultados" class="section">
+            <!-- Aquí se mostrarán los resultados del promedio de alumnos -->
+        </div>
+        <div id="mostrarResultadosCalificacion" class="section">            
+            <!-- Aquí se mostrarán los resultados del ordenamiento por calificacion de alumnos -->
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
